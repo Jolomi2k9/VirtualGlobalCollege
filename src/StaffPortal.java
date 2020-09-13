@@ -8,16 +8,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Name: Oritsejolomi Sillo
+//Student Number: 20091
 
-/**
- *
- * @author Jolomi
- */
+
 public class StaffPortal extends javax.swing.JFrame {
 
     /**
@@ -284,10 +278,11 @@ public class StaffPortal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddStudent2ActionPerformed
 
     private void jButtonRemoveStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveStudentActionPerformed
-       
+        //displays message if no student is selected
         if(jTextField_std_id.getText().equals("")){
             JOptionPane.showMessageDialog(null,"No Student Selected");
         }else{
+            //sends data to be deleted
             String id = jTextField_std_id.getText(); 
             std.insertUpdateDeleteStudent('d', id, null, null, null, null, null, null);
             //reloads the table and prevents dupicate tables from being displayed
@@ -298,7 +293,7 @@ public class StaffPortal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonRemoveStudentActionPerformed
 
     public boolean verifText(){
-        
+        //checks if any field is emty and displays error message if it is
         if(jTextField_fname2.getText().equals("") || jTextField_lname2.getText().equals("")
                 || jTextField_Phone2.getText().equals("")|| jTextArea1_Address2.getText().equals("")
                 || jTextField_std_id.getText().equals("") || jXDatePickerBirthDate2.getDate() == null){
@@ -313,7 +308,7 @@ public class StaffPortal extends javax.swing.JFrame {
     }
     
     private void jButtonEditStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditStudentActionPerformed
-        
+        //gets text from user and sends it to database
         String fname = jTextField_fname2.getText();
         String lname = jTextField_lname2.getText();
         String phone = jTextField_Phone2.getText();
@@ -331,7 +326,7 @@ public class StaffPortal extends javax.swing.JFrame {
             Student std = new Student();
             std.insertUpdateDeleteStudent('u', id, fname, lname, sex, bdate, phone, address);
             //reloads the table and prevents dupicate tables from being displayed
-            StaffPortal.jTable1.setModel(new DefaultTableModel (null,new Object[]{"Student_id","first_Name","Lasr_Name","DOB","Gender","Telephone","Email","Address"}));
+            StaffPortal.jTable1.setModel(new DefaultTableModel (null,new Object[]{"Student_id","first_Name","Last_Name","DOB","Gender","Telephone","Email","Address"}));
             std.fillStudentJtable(jTable1,"");
         }
     }//GEN-LAST:event_jButtonEditStudentActionPerformed
@@ -365,7 +360,7 @@ public class StaffPortal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButtonAddStudent2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddStudent2MouseClicked
-        
+        //call addstudentform form
             AddStudentForm addstd = new AddStudentForm();
             addstd.setVisible(true);
             addstd.pack();
